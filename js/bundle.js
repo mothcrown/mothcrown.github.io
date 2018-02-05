@@ -11284,7 +11284,7 @@ const playState = {
     game.physics.arcade.collide(guests, guests, bumpIntoPeople, null, this)
     game.physics.arcade.collide(rivals, guests, bumpIntoPeople, null, this)
     game.physics.arcade.collide(rivals, rivals, bumpIntoPeople, null, this)
-    if (game.time.now - waltz > 6000) {
+    if (game.time.now - waltz > 60000) {
       gameOver()
     }
   }
