@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Los mejores comics y personajes de Marvel</title>
+</head>
+<body>
+  <div class="container">
+      <header>
+        <h1>Los mejores comics y personajes de Marvel</h1>
+      </header>
+      <div class="content">
+        <section>
+          <div class="title">
+            <h2>Elige y vota por tu personaje Marvel favorito</h2>
+          </div> 
+          <div id="counter"><p id="currentHero">1/10</p></div>
+          <div class="carruselaux">
+            <div id="carrusel"  tabindex=0  aria-label="Elige tu personaje Marvel favorito, puedes usar las flechas para seleccionar personaje, pulsa enter para aceptar"></div>
+          </div>
+          <div class="paginator"></div>
+          <div id="text">
+            <p>Id: <span id="id"></span></p>
+            <p>Nombre: <span id="main"></span></p>
+            <p>Nº apariciones: <span id="comics"></span></p>
+            <p>Descripción: <span id="description"></span></p>
+          </div>
+          <div class="background"></div>
+        </section>
+        
+      </div>
+  </div>
+  <div class="dialog">
+    <div class="form">
+        <p>Vas a votar por <span id="nameForm"></span></p>
+        <p>¡Rellena este formulario y entra en el sorteo de dos entradas de cine!</p>
+        <label for="txtFirstName">
+          <span>Nombre<span><br />
+          <input id="txtFirstName" type="text" aria-label="Introduce tu nombre" />
+        </label><br />
+        <label for="txtLastName">
+          <span>Apellido</span><br />
+          <input id="txtLastName" type="text" aria-label="Introduce tu apellido" />
+        </label><br />
+        <label for="txtEmail">
+          <span>Email</span><br />
+          <input id="txtEmail" type="email" aria-label="Introduce tu dirección de correo electrónico" />
+        </label><br />
+        <label for="txtTfno">
+            <span>Telefono</span><br />
+            <input id="txtTfno" type="tel" aria-label="Introduce tu número de teléfono" />
+          </label>
+        <div class="buttons">
+            <input type="button" id="btnReturn" value="Volver" aria-label="Haz click en Volver o pulsa Escape para volver a la selección de personajes">
+            <input type="button" id="btnVote" value="Votar" aria-label="Haz click en Votar o pulsa enter para ver el estado de las votaciones, tardará unos segundos en redirigir a la página">
+        </div>
+    </div>
+  </div>
+  <div class="curtain"></div>
+  <div class="popup">
+    <p>¡Voto realizado!</p>
+    <p>Redirigiendo en 3 segundos...</p>
+  </div>
+  <script src="js/index-bundle.js"></script>
+</body>
+  
+</html>
