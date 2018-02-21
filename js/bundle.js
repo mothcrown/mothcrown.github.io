@@ -152,7 +152,7 @@ function playVideo(newTrack) {
     if (window.innerWidth <= 480) {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()('source').attr('src', 'js/video/video3-VGA.mp4')
     }
-    const sub = '<track label="Subtitulos" kind="subtitles" srclang="es" src="js/subtitle/video3.vtt">'
+    const sub = '<track label="Subtitulos" kind="subtitulos" srclang="es" src="js/subtitle/video3.vtt" default>'
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('video').append(sub)
   }
 
