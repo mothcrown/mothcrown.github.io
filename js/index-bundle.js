@@ -11296,8 +11296,9 @@ function activatePrincipal(mode) {
  * @param {*} index 
  */
 function moveCarousel(mode, index) {
+  deactivateArrows()
   const carouselMode = (mode === 'superheroes') ? '#carruselSuperheroes' : '#carruselComics'
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()(carouselMode).children().remove()
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()(carouselMode).empty()
   
   let i
   if (index === -1) {
@@ -11356,8 +11357,8 @@ function moveCarousel(mode, index) {
 }
 
 function deactivateButtons() {
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#btnReturn').off()
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#btnVote').off()
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#btnReturn').off('click')
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#btnVote').off('click')
 }
 
 function activateButtons(mode) {
