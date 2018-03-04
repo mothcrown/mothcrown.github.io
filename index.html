@@ -4,85 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Los mejores comics y personajes de Marvel</title>
+  <meta name="google-signin-client_id" content="1059103644824-lr7qs2ori95tdvb961s396bq8t8t1qek.apps.googleusercontent.com">
+  <title>Tienda Adormecida - ¡Tu tienda online para insomnes!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-      <header>
-        <h1>Los mejores comics y personajes de Marvel</h1>
-      </header>
-      <div class="content">
-        <section>
-          <div id="superheroes">
-            <div class="title">
-              <h2>Elige y vota por tu personaje Marvel favorito</h2>
-            </div> 
-            <div class="counter"><p id="currentHero"></p></div>
-            <div class="spinnerSuper"></div>
-            <div class="carruselaux">
-              <div id="carruselSuperheroes"  tabindex=0  aria-label="Elige tu personaje Marvel favorito, puedes usar las flechas para seleccionar personaje"></div>
-            </div>
-            <div id="paginatorSuperheroes" class="paginator"></div>
-            <div id="textSuper">
-              <p>Id: <span id="idsuper"></span></p>
-              <p>Nombre: <span id="name"></span></p>
-              <p>Nº apariciones: <span id="comics"></span></p>
-              <p>Descripción: <span id="descriptionsuper"></span></p>
-            </div>
-          </div>
-          <div id="comics">
-            <div class="title">
-              <h2>Elige y vota tu comic Marvel favorito</h2>
-            </div> 
-            <div class="counter"><p id="currentComic"></p></div>
-            <div class="spinnerComic"></div>
-            <div class="carruselaux">
-              <div id="carruselComics"  tabindex=1  aria-label="Elige tu comic Marvel favorito, puedes usar las flechas para seleccionar personaje"></div>
-            </div>
-            <div id="paginatorComics" class="paginator"></div>
-            <div id="textComic">
-              <p>Id: <span id="comicid"></span></p>
-              <p>Título: <span id="title"></span></p>
-              <p>Número: <span id="issue"></span></p>
-              <p>Descripción: <span id="descriptioncomic"></span></p>
-            </div>
-          </div>
-          <div class="background"></div>
-        </section>
-      </div>
-  </div>
-  <div class="dialog">
-    <div class="form">
-        <p>Vas a votar por <span id="nameForm"></span></p>
-        <p>¡Rellena este formulario y entra en el sorteo de dos entradas de cine!</p>
-        <label for="txtFirstName">
-          <span>Nombre<span><br />
-          <input id="txtFirstName" type="text" aria-label="Introduce tu nombre" />
-        </label><br />
-        <label for="txtLastName">
-          <span>Apellido</span><br />
-          <input id="txtLastName" type="text" aria-label="Introduce tu apellido" />
-        </label><br />
-        <label for="txtEmail">
-          <span>Email</span><br />
-          <input id="txtEmail" type="email" aria-label="Introduce tu dirección de correo electrónico" />
-        </label><br />
-        <label for="txtTfno">
-            <span>Telefono</span><br />
-            <input id="txtTfno" type="tel" aria-label="Introduce tu número de teléfono" />
-          </label>
-        <div class="buttons">
-            <input type="button" id="btnReturn" value="Volver" aria-label="Haz click en Volver o pulsa Escape para volver a la selección de personajes">
-            <input type="button" id="btnVote" value="Votar" aria-label="Haz click en Votar o pulsa enter para ver el estado de las votaciones, tardará unos segundos en redirigir a la página">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <header>
+      <div class="principal">
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.svg" title="Tienda Adormecida" alt="Logo de Tienda Adormecida"></a>
         </div>
+        <div id="barraBusqueda"></div>
+      </div>
+      <div id="login"></div>
+    </header>
+    <article id="categorias">
+      <div class="camaras">
+          <img src="images/camaras.jpeg" />
+          <p>Camaras</p>
+      </div>
+      <div class="relojes">
+          <img src="images/relojes.jpeg" />
+          <p>Relojes</p>
+      </div>
+      <div class="tablets">
+          <img src="images/tablets.jpeg" />
+          <p>Tablets</p>
+      </div>
+    </article>
+    <article id="productos">
+      <div class="contenedor_productos"></div>
+    </article>
+    <footer>
+      <div class="ayuda">
+        <i class="fa fa-question-circle"></i>
+        Ayuda
+      </div>
+      <div class="cc">
+        <p>www.tiendaadormecida.zzz</p>
+        <img src="images/by-nc-sa.eu.svg" />
+      </div>
+      <div class="direccion">
+        <p>
+          Calle Aurelio, 96 <br>
+          La Laguna, Tenerife <br>
+          CP: 38000 <br>
+          TF: xxx-xxx-xxx <br>
+        </p>
+      </div>
+    </footer>
+    <div id="loginDialog">
+      <p>Google</p>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
-  </div>
-  <div class="curtain"></div>
-  <div class="popup">
-    <p>¡Voto realizado!</p>
-    <p>Redirigiendo en 3 segundos...</p>
-  </div>
-  <script src="js/index-bundle.js"></script>
+    
+    <!-- Jesús bendito, esto qué es -->
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script src="js/main.js"></script>
 </body>
-  
 </html>
