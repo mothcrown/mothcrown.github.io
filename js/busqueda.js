@@ -96,11 +96,16 @@ var BusquedaAvanzada = function (_React$Component) {
   }
 
   _createClass(BusquedaAvanzada, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      $('#avanzadaDialog').dialog('open');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'a',
-        { href: '#' },
+        { href: '#', onClick: this.handleClick.bind(this) },
         'Avanzada'
       );
     }
@@ -196,9 +201,18 @@ var InputBusqueda = function (_React$Component4) {
   }
 
   _createClass(InputBusqueda, [{
+    key: 'handleKeyPress',
+    value: function handleKeyPress(e) {
+      if (e.which === 13 || e.keyCode === 13) {
+        var keywords = $('#inputBusqueda').val();
+        var categoria = $('#selectBusqueda').val();
+        buscaProductos(keywords, categoria);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return React.createElement('input', { id: 'inputBusqueda', type: 'text', placeholder: 'Busca ofertas' });
+      return React.createElement('input', { id: 'inputBusqueda', type: 'text', placeholder: 'Busca ofertas', onKeyPress: this.handleKeypress.bind(this) });
     }
   }]);
 

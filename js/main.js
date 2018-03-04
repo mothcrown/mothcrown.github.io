@@ -23,6 +23,12 @@ function preparaDialogs() {
     width: 500,
     height: 400
   });
+  $('#avanzadaDialog').dialog({
+    autoOpen: false,
+    title: 'Zzzzzzzz...',
+    width: 500,
+    height: 400
+  });
 }
 
 function activaBotones() {
