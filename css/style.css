@@ -192,3 +192,10 @@ footer {
 
 .data {
   display: none; }
+  .data p {
+    display: inline-block;
+    font-size: 80%;
+    margin-left: .5em; }
+  .data button {
+    position: relative;
+    right: 0; }
