@@ -191,11 +191,14 @@ footer {
       transform: scale(1.1) scale(1.1); }
 
 .data {
+  padding-top: 0;
   display: none; }
   .data p {
     display: inline-block;
     font-size: 80%;
     margin-left: .5em; }
+  .data img {
+    border-radius: 3em; }
   .data button {
     position: relative;
     right: 0; }
