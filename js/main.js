@@ -29,6 +29,12 @@ function preparaDialogs() {
     width: 500,
     height: 400
   });
+  $('#ayudaDialog').dialog({
+    autoOpen: false,
+    title: 'Ayuda!',
+    width: 500,
+    height: 400
+  });
 }
 
 function activaBotones() {
@@ -42,6 +48,9 @@ function activaBotones() {
   });
   $('#detalleVolver').click(function () {
     $('#detalleDialog').dialog('close');
+  });
+  $('#botonAyuda').click(function () {
+    $('#ayudaDialog').dialog('close');
   });
 }
 
@@ -57,11 +66,18 @@ function activaCategorias() {
   });
 }
 
+function activaAyuda() {
+  $('#ayuda').click(function () {
+    $('#ayudaDialog').dialog('open');
+  });
+}
+
 $(document).ready(function () {
   React.render(React.createElement(Busqueda, null), document.getElementById('barraBusqueda'));
   React.render(React.createElement(Login, null), document.getElementById('login'));
   preparaDialogs();
   activaBotones();
   activaCategorias();
+  activaAyuda();
   buscaDefecto(idCategorias.camaras.eBay);
 });

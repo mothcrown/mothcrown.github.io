@@ -42,7 +42,7 @@
     <footer>
       <div class="ayuda">
         <i class="fa fa-question-circle"></i>
-        Ayuda
+        <span id="ayuda">Ayuda</span>
       </div>
       <div class="cc">
         <p>www.tiendaadormecida.zzz</p>
@@ -62,9 +62,9 @@
       <div class="g-signin2" data-onsuccess="onSignInGoogle"></div>
     </div>
     <div id="detalleDialog">
-        <p>Nombre: <span id="detalleNombre"></span></p>
-        <p>Descripción: <span id="detalleDescripcion"></span>.</p>
-        <p>Precio: <span id="detallePrecio"></span></p>
+        <p><b>Nombre:</b> <span id="detalleNombre"></span></p>
+        <p><b>Descripción: </b> <span id="detalleDescripcion"></span>.</p>
+        <p><b>Precio:</b> <span id="detallePrecio"></span></p>
         <div>
             <input type="button" id="detalleVolver" value="Volver" />
             <input type="button" id="detalleComprar" value="Comprar!" />
@@ -81,6 +81,30 @@
     <div id="avanzadaDialog">
       <p>¡Esta sección no está disponible todavía... el equipo de desarrollo se quedó dormido!</p>
       <img src="images/error.jpg" />
+    </div>
+    <div id="ayudaDialog">
+      <h3>Ayuda</h3>
+      <p>¡Hola, bienvenido a la sección de ayuda de TiendaAdormecida!</p>
+      <p>
+        Seguramente estés aquí porque todos nuestros operarios se encuentran durmiendo la siesta
+        y no hay nadie que conteste el teléfono, ¡pero no te preocupes, aquí estamos para ayudarte!
+      </p>
+      <p>
+         El funcionamiento de nuestra página es la mar de simple: buscas algo de algunas de las tres 
+         categorías y te salen 10 resultados. ¿Por qué 10? Porque nuestro equipo de adormecidos científicos
+         dedujo que era la cantidad ideal para leer de madrugada con todos los ojos llenos de legañas. ¡Ciencia!
+      </p>
+      <p>
+          Para poder comprar un producto primero necesitas registrarte con tu cuenta de Google, de lo contrario
+          te va a volver a mandar al formulario de registro. ¡En esta tienda solo aceptamos clientes de calidad!
+       </p>
+       <p>
+          ¡Y eso debería ser todo! Si tienes más preguntas sobre el funcionamiento de esta tienda, por favor,
+           no dudes en contactarnos en nuestro horario de trabajo de 11:00 de la mañana a 12:00 de la tarde. ¡Gracias!
+       </p>
+       <div>
+          <input type="button" id="botonAyuda" value="No sé para qué he abierto esto..." />
+        </div>
     </div>
 
     <!-- Jesús bendito, esto qué es -->
