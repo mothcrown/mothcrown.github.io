@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <header>
       <div class="principal">
@@ -60,6 +61,10 @@
     <div id="loginDialog">
       <p>Google</p>
       <div class="g-signin2" data-onsuccess="onSignInGoogle"></div>
+      <p>Facebook</p>
+      <div><fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></div>
+      <p>Twitter</p>
+      <div><button onclick="signIn()">Iniciar sesion</button>
     </div>
     <div id="detalleDialog">
         <p><b>Nombre:</b> <span id="detalleNombre"></span></p>
