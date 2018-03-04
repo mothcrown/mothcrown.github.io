@@ -18,10 +18,10 @@ function onSignInGoogle(googleUser) {
   console.log('Email: ' + profile.getEmail());
   // $('.g-signin2').css('display', 'none');
   $('#login').empty();
-  $('#login').append('\n    <div class="data">\n        <p>Profile Details</p>\n        <img id="pic" class="img-circle" width="100" height="100"/>\n        <p>Email Address</p>\n        <p id="email" class="alert alert-danger"></p>\n        <button onclick="signOutGoogle()" class="btn btn-danger">SignOut</button>\n    </div>\n  ');
+  $('#login').append('\n    <div class="data">\n        <img id="pic" class="img-circle" width="50" height="50"/>\n        <p style="margin-left: .5em;display:inline-block>Nombre: <span id="name"></span></p>\n        <button onclick="signOutGoogle()" class="btn btn-danger">SignOut</button>\n    </div>\n  ');
   $('.data').css('display', 'block');
   $('#pic').attr('src', profile.getImageUrl());
-  $('#email').text(profile.getEmail());
+  $('#name').text(profile.getName());
 }
 
 function signOutGoogle() {
