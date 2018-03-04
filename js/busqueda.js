@@ -63,7 +63,7 @@ function buscaProductos(keywords, categoria) {
 }
 
 function buscaDefecto(categoria) {
-  var urlDefecto = 'http://svcs.ebay.com/MerchandisingService?';
+  var urlDefecto = 'https://svcs.ebay.com/MerchandisingService?';
   $.ajax({
     url: urlDefecto,
     type: 'POST',

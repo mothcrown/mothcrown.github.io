@@ -9,8 +9,8 @@ var apiKey = {
 };
 
 var urlBasica = {
-  ebay: 'http://svcs.ebay.com/services/search/FindingService/v1?',
-  walmart: 'http://api.walmartlabs.com/v1/search?callback=?',
+  ebay: 'https://svcs.ebay.com/services/search/FindingService/v1?',
+  walmart: 'https://api.walmartlabs.com/v1/search?callback=?',
   forex: 'https://forex.1forge.com/1.0.3/convert?from=USD&to=EUR'
 };
 
