@@ -37,6 +37,9 @@ function preparaDialogs() {
   });
 }
 
+/**
+ * Botones de diálogos
+ */
 function activaBotones() {
   $('#botonComprar').click(function () {
     $('#comprarDialog').dialog('close');
@@ -54,6 +57,9 @@ function activaBotones() {
   });
 }
 
+/**
+ * Búsquedas por defecto a un click de distancia
+ */
 function activaCategorias() {
   $('.camaras').click(function () {
     buscaDefecto(idCategorias.camaras.eBay);
@@ -66,12 +72,18 @@ function activaCategorias() {
   });
 }
 
+/**
+ * No habrá filtros, pero hay chistes.
+ */
 function activaAyuda() {
   $('#ayuda').click(function () {
     $('#ayudaDialog').dialog('open');
   });
 }
 
+/**
+ * El corazón de la bestia... adormecida.
+ */
 $(document).ready(function () {
   React.render(React.createElement(Busqueda, null), document.getElementById('barraBusqueda'));
   React.render(React.createElement(Login, null), document.getElementById('login'));

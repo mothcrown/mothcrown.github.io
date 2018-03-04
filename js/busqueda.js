@@ -50,10 +50,14 @@ function buscaEBay(keywords, idCategoria, limit) {
   });
 }
 
+/**
+ * Lanzamos peticiones ajax a todos lados y esperamos que pasen cosas
+ * @param {*} keywords 
+ * @param {*} categoria 
+ */
 function buscaProductos(keywords, categoria) {
   var busqueda = keywords;
-  // Quita espacios y los cambia por '%20'
-  // busqueda = encodeURIComponent(busqueda.trim());
+  // Walmart es especialito con estas cosas.
   if (keywords !== '' && keywords !== '*') {
     buscaWalmart(busqueda, idCategorias[categoria].Walmart, 5);
     buscaEBay(busqueda, idCategorias[categoria].eBay, 5);
@@ -62,6 +66,10 @@ function buscaProductos(keywords, categoria) {
   }
 }
 
+/**
+ * Busca los items más vistos según categoría
+ * @param {*} categoria 
+ */
 function buscaDefecto(categoria) {
   var urlDefecto = 'https://svcs.ebay.com/MerchandisingService?';
   $.ajax({
@@ -85,6 +93,10 @@ function buscaDefecto(categoria) {
     }
   });
 }
+
+/**
+ * :D
+ */
 
 var BusquedaAvanzada = function (_React$Component) {
   _inherits(BusquedaAvanzada, _React$Component);
@@ -133,11 +145,14 @@ var BotonBusqueda = function (_React$Component2) {
   }, {
     key: 'render',
     value: function render() {
-      return React.createElement(
-        'button',
-        { id: 'botonBusqueda', onClick: this.handleClick.bind(this) },
-        React.createElement('i', { className: 'fa fa-search' }),
-        'Buscar'
+      return (
+        // Esto me costó.
+        React.createElement(
+          'button',
+          { id: 'botonBusqueda', onClick: this.handleClick.bind(this) },
+          React.createElement('i', { className: 'fa fa-search' }),
+          'Buscar'
+        )
       );
     }
   }]);
@@ -191,6 +206,10 @@ SelectBusqueda.defaultProps = {
   }
 };
 
+/**
+ * Cuando buscas algo y pulsas enter salen cosas. Guay, eh?
+ */
+
 var InputBusqueda = function (_React$Component4) {
   _inherits(InputBusqueda, _React$Component4);
 
@@ -218,6 +237,11 @@ var InputBusqueda = function (_React$Component4) {
 
   return InputBusqueda;
 }(React.Component);
+
+/**
+ * Clase Busqueda
+ */
+
 
 var Busqueda = function (_React$Component5) {
   _inherits(Busqueda, _React$Component5);

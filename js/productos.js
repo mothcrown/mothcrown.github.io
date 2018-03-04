@@ -297,6 +297,11 @@ function mostrarProductos() {
   convertirDolarAEuro();
 }
 
+/**
+ * Esto se podría refactorizar. Pero también podría irme a montar una huerta o algo.
+ * Meto productos saliditos de eBay y Walmart y los "estandarizo". Por cierto, muy majos
+ * los de eBay cambiando el formato con la nueva API.
+ */
 function moldeProductos(items, api) {
   listaProductos = [];
   var numItems = items.length;
@@ -313,6 +318,7 @@ function moldeProductos(items, api) {
       var producto = new Producto(id, nombre, descripcion, _descripcionCorta, precio, rutaImagen, tipo);
       listaProductos.push(producto);
     }
+    // Es que es para correrlos a gorrazos, leñe
     if (api === 'eBay-Default') {
       var _id = items[i].itemId;
       var _nombre = items[i].title;
@@ -341,6 +347,9 @@ function moldeProductos(items, api) {
   mostrarProductos();
 }
 
+/**
+ * Esto mata bugs.
+ */
 function comprarDesdeDetalles(nombre, precio) {
   if ($('#name').text() !== '') {
     var productoElegido = void 0;

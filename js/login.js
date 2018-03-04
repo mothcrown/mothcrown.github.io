@@ -10,6 +10,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /* global React $ */
 
+/**
+ * Copiar y pegar.
+ * @param {} googleUser 
+ */
 function onSignInGoogle(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -18,6 +22,7 @@ function onSignInGoogle(googleUser) {
   console.log('Email: ' + profile.getEmail());
   // $('.g-signin2').css('display', 'none');
   $('#login').empty();
+  // Esto tuve que hacerlo y no me siento nada orgulloso de ello
   $('#login').append('\n    <div class="data">\n        <p id="name"></p>\n        <img id="pic" class="img-circle" width="50" height="50"/>\n        <button onclick="signOutGoogle()" class="btn btn-danger">Salir</button>\n    </div>\n  ');
   $('.data').css('display', 'block');
   $('#pic').attr('src', profile.getImageUrl());
