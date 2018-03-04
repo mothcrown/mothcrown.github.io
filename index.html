@@ -61,11 +61,23 @@
       <p>Google</p>
       <div class="g-signin2" data-onsuccess="onSignInGoogle"></div>
     </div>
+    <div id="detalleDialog">
+        <p>Nombre: <span id="detalleNombre"></span></p>
+        <p>Descripción: <span id="detalleDescripcion"></span>.</p>
+        <p>Precio: <span id="detallePrecio"></span></p>
+        <div>
+            <input type="button" id="detalleVolver" value="Volver" />
+            <input type="button" id="detalleComprar" value="Comprar!" />
+        </div>
+      </div>
     <div id="comprarDialog">
       <p>¡Hola, <span id="comprarNombre"></span>!</p>
       <p>Gracias por comprar <span id="comprarProductoNombre"></span>.</p>
       <p>Hemos pasado un cargo a tu tarjeta por <span id="comprarPrecio"></span>.</p>
-      <input type="button" id="botonComprar" value="Ok!" />
+      <div>
+        <input type="button" id="botonComprar" value="Ok!" />
+      </div>
+      
     </div>
 
     <!-- Jesús bendito, esto qué es -->

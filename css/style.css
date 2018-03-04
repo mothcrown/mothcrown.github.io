@@ -210,3 +210,7 @@ footer {
   #comprarDialog button {
     position: absolute;
     right: 5%; }
+
+#detalleDialog div {
+  display: flex;
+  justify-content: space-between; }

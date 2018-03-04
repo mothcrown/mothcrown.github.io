@@ -1,6 +1,6 @@
 'use strict';
 
-/* global $ React Busqueda buscaDefecto idCategorias*/
+/* global $ React Busqueda buscaDefecto idCategorias comprarDesdeDetalles */
 
 function preparaDialogs() {
   $('#loginDialog').dialog({
@@ -20,7 +20,15 @@ function preparaDialogs() {
 
 function activaBotones() {
   $('#botonComprar').click(function () {
-    $('comprarDialog').dialog('close');
+    $('#comprarDialog').dialog('close');
+  });
+  $('#detalleComprar').click(function () {
+    var nombre = $('#detalleNombre').text();
+    var precio = $('#detallePrecio').text();
+    comprarDesdeDetalles(nombre, precio);
+  });
+  $('#detalleVolver').click(function () {
+    $('#detalleDialog').dialog('close');
   });
 }
 
