@@ -151,19 +151,26 @@ var ProductosDOM = function (_React$Component2) {
     }
   }, {
     key: 'comprarProducto',
-    value: function comprarProducto(id) {
-      var productoElegido = void 0;
+    value: function comprarProducto(id, precio) {
+      if ($('#name').text() !== '') {
+        var productoElegido = void 0;
 
-      for (var i = 0; i < listaProductos.length; i++) {
-        if (listaProductos[i]['id'] == id) {
-          productoElegido = listaProductos[i];
+        for (var i = 0; i < listaProductos.length; i++) {
+          if (listaProductos[i]['id'] == id) {
+            productoElegido = listaProductos[i];
+          }
         }
+
+        $('#comprarDialog').dialog('open');
+        var userName = $('#name').text();
+        var productoNombre = productoElegido.nombre;
+        $('#comprarNombre').text(userName);
+        $('#comprarProductoNombre').text(productoNombre);
+        $('#comprarPrecio').text(precio);
+        // alert("Producto a comprar: "+productoElegido.nombre);
+      } else {
+        $('#loginDialog').dialog('open');
       }
-
-      alert("Producto a comprar: " + productoElegido.nombre);
-
-      console.log('a');
-      cambiarBusqueda();
     }
   }, {
     key: 'render',
@@ -217,7 +224,7 @@ var ProductosDOM = function (_React$Component2) {
               'a',
               {
                 className: 'comprar_producto \r ', href: 'javascript:void(0);',
-                onClick: this.comprarProducto.bind(this, this.props.id) },
+                onClick: this.comprarProducto.bind(this, this.props.id, this.props.precio) },
               'Comprar'
             )
           )

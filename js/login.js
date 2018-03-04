@@ -28,7 +28,8 @@ function signOutGoogle() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     $('.g-signin2').css('display', 'block');
-    $('.data').css('display', 'none');
+    $('#login').empty();
+    React.render(React.createElement(Login, null), document.getElementById('login'));
   });
 }
 

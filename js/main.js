@@ -9,6 +9,13 @@ function preparaDialogs() {
     height: 400
   });
   $('#loginDialog').dialog('close');
+
+  $('#comprarDialog').dialog({
+    title: '¡Producto comprado!',
+    width: 500,
+    height: 400
+  });
+  $('#comprarDialog').dialog('close');
 }
 
 function activaCategorias() {
