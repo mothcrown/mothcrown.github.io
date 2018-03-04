@@ -212,7 +212,7 @@ var InputBusqueda = function (_React$Component4) {
   }, {
     key: 'render',
     value: function render() {
-      return React.createElement('input', { id: 'inputBusqueda', type: 'text', placeholder: 'Busca ofertas', onKeyPress: this.handleKeypress.bind(this) });
+      return React.createElement('input', { id: 'inputBusqueda', type: 'text', placeholder: 'Busca ofertas', onKeyPress: this.handleKeyPress.bind(this) });
     }
   }]);
 
