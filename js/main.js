@@ -4,18 +4,25 @@
 
 function preparaDialogs() {
   $('#loginDialog').dialog({
+    autoOpen: false,
     title: 'Regístrate en TiendaAdormecida',
     width: 500,
     height: 400
   });
-  $('#loginDialog').dialog('close');
 
   $('#comprarDialog').dialog({
+    autoOpen: false,
     title: '¡Producto comprado!',
     width: 500,
     height: 400
   });
-  $('#comprarDialog').dialog('close');
+
+  $('#detalleDialog').dialog({
+    autoOpen: false,
+    title: 'Información sobre el producto',
+    width: 500,
+    height: 400
+  });
 }
 
 function activaBotones() {
