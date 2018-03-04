@@ -202,3 +202,11 @@ footer {
   .data button {
     position: relative;
     right: 0; }
+
+#comprarDialog {
+  position: relative; }
+  #comprarDialog span {
+    font-weight: bold; }
+  #comprarDialog button {
+    position: absolute;
+    right: 5%; }

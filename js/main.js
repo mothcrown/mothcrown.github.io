@@ -18,6 +18,12 @@ function preparaDialogs() {
   $('#comprarDialog').dialog('close');
 }
 
+function activaBotones() {
+  $('#botonComprar').click(function () {
+    $('comprarDialog').dialog('close');
+  });
+}
+
 function activaCategorias() {
   $('.camaras').click(function () {
     buscaDefecto(idCategorias.camaras.eBay);
@@ -34,6 +40,7 @@ $(document).ready(function () {
   React.render(React.createElement(Busqueda, null), document.getElementById('barraBusqueda'));
   React.render(React.createElement(Login, null), document.getElementById('login'));
   preparaDialogs();
+  activaBotones();
   activaCategorias();
   buscaDefecto(idCategorias.camaras.eBay);
 });
