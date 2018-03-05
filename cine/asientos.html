@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cine Hammer - Elige tu asiento</title>
+</head>
+<body>
+  <body>
+    <div class="container">
+        <header>
+          <h1>Cine Hammer</h1>
+        </header>
+        <div class="content">
+          <section>
+              <div class="barra">
+                  <p>Primer paso:</p>
+                  <div id="barraEstado">
+                    <div id="estado"></div>
+                  </div>
+                </div>
+            <div class="title">
+              <h2>¡Elige tu asiento!</h2>
+            </div>
+            <div class="info">
+              <p>Película: <span id="infoPelicula"></span></p>
+              <p>Sala: <span id="infoSala"></span></p>
+              <p>Sesión: <span id="infoSesion"></span></p>
+              <p>Asientos seleccionados: <span id="infoAsientos">Ninguno</span></p>
+            </div>
+            <div class="sala">
+                <svg id="salaCine" width="800" height="500">
+                    <symbol
+                      id="asiento" class="asientos">
+                     <path
+                        transform="scale(-1,1)"
+                        style="stroke:#000000;stroke-width:1.65111053;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                        d="m -38.930397,115.51906 a 17.08247,6.8650222 0 0 1 -17.08247,6.86502 17.08247,6.8650222 0 0 1 -17.08247,-6.86502 17.08247,6.8650222 0 0 1 17.08247,-6.86502 17.08247,6.8650222 0 0 1 17.08247,6.86502 z"
+                        id="path851" />
+                     <path
+                        transform="scale(-1,1)"
+                        style="stroke:#000000;stroke-width:1.22710156;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                        d="m -66.675147,96.933784 h 21.091374 c 0.63795,0 1.151535,0.513585 1.151535,1.151536 v 15.98869 c 0,0.63795 -0.513585,1.15154 -1.151535,1.15154 h -21.091374 c -0.637951,0 -1.151536,-0.51359 -1.151536,-1.15154 V 98.08532 c 0,-0.637951 0.513585,-1.151536 1.151536,-1.151536 z"
+                        id="rect815" />
+                     <path
+                        transform="scale(-1,1)"
+                        style="stroke:#000000;stroke-width:1.50075769;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                        d="m -72.462072,93.081848 h 3.412143 c 0.695473,0 1.255366,0.559893 1.255366,1.255366 v 19.665116 c 0,0.69548 -0.559893,1.25537 -1.255366,1.25537 h -3.412143 c -0.695473,0 -1.255366,-0.55989 -1.255366,-1.25537 V 94.337214 c 0,-0.695473 0.559893,-1.255366 1.255366,-1.255366 z"
+                        id="rect817" />
+                     <path
+                        transform="scale(-1,1)"
+                        style="stroke:#000000;stroke-width:1.50075769;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                        d="m -43.176877,93.049728 h 3.412143 c 0.695472,0 1.255366,0.559894 1.255366,1.255366 v 19.665126 c 0,0.69547 -0.559894,1.25536 -1.255366,1.25536 h -3.412143 c -0.695473,0 -1.255366,-0.55989 -1.255366,-1.25536 V 94.305094 c 0,-0.695472 0.559893,-1.255366 1.255366,-1.255366 z"
+                        id="rect817-5" />
+                    </symbol>
+                    <rect x="150" y="20" height="10" width="400" style="stroke:#000; fill: grey"></rect>
+                    <text x="325" y="45" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Pantalla
+                      </text>
+                    
+                    <rect x="332" y="140" title="Alfombra" height="400" width="50" style="stroke:#000; fill: maroon"></rect>
+                    <circle cx="50" cy="30" r="20" stroke="black" stroke-width="3" fill="ghostwhite" />
+                    <text x="25" y="70" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Columna
+                      </text>
+                    <circle cx="665" cy="30" r="20" stroke="black" stroke-width="3" fill="ghostwhite" />
+                    <text x="630" y="70" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Columna
+                      </text>
+                    <circle cx="50" cy="475" r="20" stroke="black" stroke-width="3" fill="ghostwhite" />
+                    <text x="25" y="445" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Columna
+                      </text>
+                    <circle cx="665" cy="475" r="20" stroke="black" stroke-width="3" fill="ghostwhite" />
+                    <text x="630" y="445" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Columna
+                      </text>
+                    <rect x="25" y="290" title="Alfombra" height="50" width="660" style="fill: maroon"></rect>
+                    <text x="335" y="485" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Salida
+                      </text>
+                  </svg>
+            </div>
+            <div class="background"></div>
+          </section>
+        </div>
+    </div>
+    <script src="js/seats-bundle.js"></script>
+</body>
+</html>

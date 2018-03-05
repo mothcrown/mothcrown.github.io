@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cine Hammer - Página Oficial</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+          <h1>Cine Hammer</h1>
+        </header>
+        <div class="content">
+          <section>
+            <div class="title">
+              <h2>Cartelera</h2>
+            </div> 
+            <div class="carruselaux">
+              <div id="carrusel" tabindex=0  aria-label="Elige tu película favorita, puedes usar las flechas para seleccionar película, pulsa enter para aceptar"></div>
+            </div>
+            <div id="text" tabindex=2>
+              <div class="row"><p>Sala: <span id="sala"></span></p><p>Horas: <span id="horas"></span></p></div>
+              <div class="row"><p>Título: <span id="titulo"></span></p><p>Año: <span id="anno"></span></p></div>
+              <p>Sinopsis: <span id="sinopsis"></span></p>
+            </div>
+            <div class="background"></div>
+          </section>
+        </div>
+    </div>
+    <div class="dialog">
+      <div class="form">
+          <p>Horarios para <span id="tituloForm"></span></p>
+          <p>Sala: <span id="salaForm"></span></p>
+          <p>Sesiones:</p>
+          <div id="horarios"></div>
+          <div class="buttons">
+              <input type="button" id="btnReturn" value="Volver" aria-label="Haz click en Volver o pulsa Escape para volver a la selección de personajes">
+          </div>
+      </div>
+    </div>
+  <script src="js/index-bundle.js"></script>
+</body>
+</html>
