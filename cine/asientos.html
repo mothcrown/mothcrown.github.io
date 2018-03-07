@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cine Hammer - Elige tu asiento</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <body>
     <div class="container">
         <header>
-          <h1>Cine Hammer</h1>
-        </header>
+            <a href="index.html"><img src="js/images/logo.svg" title="Cine Hammer!" alt="Logo de Cine Hammer"></img></a>
+          </header>
         <div class="content">
           <section>
               <div class="barra">
-                  <p>Primer paso:</p>
                   <div id="barraEstado">
                     <div id="estado"></div>
                   </div>
                 </div>
             <div class="title">
-              <h2>¡Elige tu asiento!</h2>
+              <h2>Primer paso: ¡Elige tu asiento!</h2>
             </div>
             <div class="info">
               <p>Película: <span id="infoPelicula"></span></p>
@@ -29,8 +29,38 @@
               <p>Sesión: <span id="infoSesion"></span></p>
               <p>Asientos seleccionados: <span id="infoAsientos">Ninguno</span></p>
             </div>
+            <div class="botones">
+                <div class="botoneszoom">
+                    <button id="vermas">
+                      <i class="fa fa-search-plus fa-2x"></i>
+                    </button>
+                    <button id="vermenos">
+                        <i class="fa fa-search-minus fa-2x"></i>
+                      </button>
+                    <button id="moveleft">
+                        <i class="fa fa-caret-left fa-2x"></i>
+                    </button>
+                    <button id="moveright">
+                        <i class="fa fa-caret-right fa-2x"></i>
+                    </button>
+                    <button id="moveup">
+                      <i class="fa fa-caret-up fa-2x"></i>
+                    </button>
+                    <button id="movedown">
+                      <i class="fa fa-caret-down fa-2x"></i>
+                    </button>
+                    
+            </div>
+            
+            <div class="botoncomprar">
+                <button id="comprarasientos">
+                    <span>Comprar</span>
+                    <i class="fa fa-arrow-right fa-2x"></i>
+                  </button>
+            </div>
+              </div>
             <div class="sala">
-                <svg id="salaCine" width="800" height="500">
+                <svg id="salaCine" width="700" height="500" viewBox="0 0 700 500">
                     <symbol
                       id="asiento" class="asientos">
                      <path
@@ -80,11 +110,24 @@
                     <text x="335" y="485" font-family="Verdana" font-size="12" fill="ghostwhite">
                         Salida
                       </text>
+                      <rect x="5" y="290" title="Salida Emergencia 1" height="50" width="10" style="stroke:#000; fill: yellow"></rect>
+                    <text x="20" y="300" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Salida emergencia
+                      </text>
+                    <rect x="690" y="290" title="Salida Emergencia 2" height="50" width="10" style="stroke:#000; fill: yellow"></rect>
+                    <text x="575" y="300" font-family="Verdana" font-size="12" fill="ghostwhite">
+                        Salida emergencia
+                      </text>
                   </svg>
+                  
             </div>
-            <div class="background"></div>
+            <div class="background backgrounda"></div>
           </section>
         </div>
+        <footer class="footera">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img id="ccicon" title="Creative Commons license" src="js/images/by-nc-sa.eu.svg"></img></a>
+            <p>Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+        </footer>
     </div>
     <script src="js/seats-bundle.js"></script>
 </body>

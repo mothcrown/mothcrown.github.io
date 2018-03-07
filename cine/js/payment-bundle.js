@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11058,12 +11058,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = {"pelicula1":{"titulo":"La caída de la casa Usher","sala":1,"horario":["18:00","20:00","22:00"],"año":"1960","sinopsis":"Un joven caballero es invitado al viejo caserón de un amigo de la infancia, Roderick Usher, artista enfermizo y excéntrico que vive completamente recluido en compañía de su hermana, Lady Madeline, también delicada de salud.","imagen":"caidacasausher"},"pelicula2":{"titulo":"Suspiria","sala":2,"horario":["18:00","20:00","22:00"],"año":"1977","sinopsis":"Una joven (Jessica Harper) ingresa en una exclusiva academia de baile la misma noche en que asesinan a una de las alumnas. La subdirectora del centro es la amable Madame Blank, que brinda a la nueva alumna las comodidades y facilidades necesarias para su aprendizaje. Pero, poco a poco, una atmósfera malsana se va apoderando del lugar, y la estancia de la joven se va convirtiendo en una verdadera pesadilla.","imagen":"suspiria"},"pelicula3":{"titulo":"Xtro","sala":3,"horario":["20:00","22:00","00:00"],"año":"1982","sinopsis":"Cuando Sam Phillips, un padre de familia normal y corriente, desaparece sin dejar rastro, sólo su hijo Tony sabe que lo hizo después de que un gran destello apareciera en el cielo. Pero cuando Sam reaparece tan súbitamente como se había ido, Tony sabe que algo ha cambiado y que ya no es un ser humano. A medida que el cuerpo de Sam se va deteriorando, por culpa de un extraterrestre oculto en su interior, su hijo se da cuenta de que debe actuar para detener al intruso y evitar que infecte a los humanos con los millones de larvas alienígenas que transporta.","imagen":"xtro"},"pelicula4":{"titulo":"La maldición del hombre lobo","sala":4,"horario":["20:00","22:00","00:00"],"año":"1961","sinopsis":"Tras ser violada, una joven sirvienta sordomuda da a luz a una criatura aparentemente normal. Pero a medida que el niño crece comienza a dar señales de un extraño comportamiento; sus incontrolables reacciones durante las noches de luna llena anuncian una terrorífica metamorfosis.","imagen":"maldicionhombrelobo"},"pelicula5":{"titulo":"Mi novia es un zombie","sala":4,"horario":["10:00","12:00"],"año":"1994","sinopsis":"Francesco Dellamorte es el cuidador del cementerio de Buffalora, un pueblo del norte de Italia. Dellamorte vive una vida solitaria apartado del mundo; su único amigo es Gnaghi, un pequeño, feo, lisiado y mudo compañero con el que comparte su ronda diaria por el cementerio. Desde hace algún tiempo, los muertos enterrados en el cementerio de Buffalora reviven debido a una súbita y misteriosa epidemia. Dellamorte tendrá que impedir que los muertos invadan el mundo de los vivos, algo que el resto de los humanos piensa que es sólo parte de su imaginación...","imagen":"noviazombie"}}
-
-/***/ }),
+/* 8 */,
 /* 9 */,
 /* 10 */,
 /* 11 */,
@@ -11072,15 +11067,19 @@ module.exports = {"pelicula1":{"titulo":"La caída de la casa Usher","sala":1,"h
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(18);
+__webpack_require__(22);
 module.exports = __webpack_require__(1);
 
 
 /***/ }),
-/* 18 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11090,162 +11089,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* global */
 
 
-const movies = __webpack_require__(8)
-let sala = __webpack_require__(19)
-let asientos = __webpack_require__(20)
 
-const defaultViewBox = ['700', '500']
+let ticket
 
-function loadCinema() {
-  if (Storage !== void(0)) {
-    if (localStorage.asientos !== undefined) {
-      asientos = JSON.parse(localStorage.asientos)
-    } else {
-      localStorage.asientos = JSON.stringify(asientos)
-    }
-  }
-}
-
-function creaSala() {
-  loadCinema()
-  const svgns = 'http://www.w3.org/2000/svg'
-  const xlinkns = 'http://www.w3.org/1999/xlink'
-  Object.values(sala.asientos).map((sitio) => {
-    const use = document.createElementNS(svgns, 'use')
-    use.id = sitio.fila + sitio.asiento
-    use.setAttribute('x', sitio.px)
-    use.setAttribute('y', sitio.py)
-    use.classList.add('libre')
-    use.setAttributeNS(xlinkns, 'href', '#asiento')
-    document.getElementById('salaCine').appendChild(use)
-  })
-  const ticket = JSON.parse(localStorage.ticket)
-  const asientosOcupados = asientos[`sala${ticket.sala}`][`${ticket.sesion}`]
-  asientosOcupados.map((asiento) => {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`#${asiento}`).addClass('ocupado')
-  })
-}
-
-function cargaInfo() {
-  const ticket = JSON.parse(localStorage.ticket)
+function loadTicket() {
+  ticket = JSON.parse(localStorage.ticket)
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoPelicula').text(ticket.pelicula)
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoSala').text(ticket.sala)
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoSesion').text(ticket.sesion)
+  let asientos = ''
+  const numAsientos = ticket.asientos.length
+  const precioTotal = 8 * numAsientos
+  ticket.asientos.map((asiento) => {
+    asientos += `${asiento}, `
+  })
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoAsientos').text(asientos.slice(0, -2))
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#numAsientos').text(numAsientos)
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#precioTotal').text(`${precioTotal}€`)
 }
 
-function guardaEstado(asientoId, estado) {
-  const ticket = JSON.parse(localStorage.ticket)
-  const asientosOcupados = asientos[`sala${ticket.sala}`][`${ticket.sesion}`]
-  let asientos1 = ''
-  if (estado) {
-    asientosOcupados.push(asientoId)
-    ticket.asientos.push(asientoId)
-    
-    ticket.asientos.map((asiento) => {
-      asientos1 += `${asiento}, `
-    })
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoAsientos').text(asientos1.slice(0, -2))
+function buyTicket() {
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.curtain').css('display', 'block')
+  setTimeout(() => {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.curtain').empty()
+    const userName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#userName').val()
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#nombreusuario').text(userName)
+    const precioFinal = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#precioTotal').text()
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#preciofinal').text(precioFinal)
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dialog').css('display', 'flex')
+  }, 3000)
+}
+
+function openDialog() {
+  const userName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#userName').val()
+  if (userName !== '') {
+    buyTicket()
   } else {
-    const index1 = asientosOcupados.indexOf(asientoId)
-    if (index1 > -1) {
-      asientosOcupados.splice(index1, 1)
-    }
-    const index2 = ticket.asientos.indexOf(asientoId)
-    if (index2 > -1) {
-      ticket.asientos.splice(index2, 1)
-    }
-    ticket.asientos.map((asiento) => {
-      asientos1 += `${asiento}, `
-    })
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#infoAsientos').text(asientos1.slice(0, -2))
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.popup').css('display', 'block')
+    setTimeout(() => {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.popup').css('display', 'none')
+    }, 2000)
   }
-  localStorage.asientos = JSON.stringify(asientos)
-  localStorage.ticket = JSON.stringify(ticket)
 }
 
-function activateSeats() {
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('use').click((event) => {
-    const asientoId = event.currentTarget.id
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).toggleClass('seleccionado')
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).toggleClass('libre')
-    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).hasClass('seleccionado')) {
-      guardaEstado(asientoId, true)
-    } else {
-      guardaEstado(asientoId, false)
-    }
+function activateButtons() {
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#comprafinal').click((e) => {
+    e.preventDefault()
+    openDialog()
   })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.ocupado').off('click')
-}
-
-function activateZoom() {
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#vermas').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = +currentViewBox[2] - 100
-    const y = +currentViewBox[3] - 100
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#btnIndex').click(() => {
+    document.location = 'index.html'
   })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#vermenos').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = +currentViewBox[2] + 100
-    const y = +currentViewBox[3] + 100
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
-  })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#moveleft').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = +currentViewBox[2] - 100
-    
-    const y = +currentViewBox[3]
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
-  })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#moveright').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = (+currentViewBox[2] === 700) ? +currentViewBox[2] : +currentViewBox[2] + 100
-    const y = +currentViewBox[3]
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
-  })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#moveup').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = +currentViewBox[2]
-    const y = (+currentViewBox[2] === 500) ? +currentViewBox[2] : +currentViewBox[2] + 100
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
-  })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#movedown').click(() => {
-    let currentViewBox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox')
-    currentViewBox = currentViewBox.split(' ')
-    const x = +currentViewBox[2]
-    const y = +currentViewBox[3] - 100
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#salaCine').attr('viewBox', `0 0 ${x} ${y}`)
-  })
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#comprarasientos').click(() => {
-    document.location = 'pago.html'
-  })
-
 }
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
-  creaSala()
-  cargaInfo()
-  activateSeats()
-  activateZoom()
+  loadTicket()
+  activateButtons()
 })
 
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports = {"asientos":{"A1":{"fila":"A","asiento":"1","px":0,"py":0},"A2":{"fila":"A","asiento":"2","px":50,"py":15},"A3":{"fila":"A","asiento":"3","px":100,"py":25},"A4":{"fila":"A","asiento":"4","px":150,"py":35},"A5":{"fila":"A","asiento":"5","px":200,"py":40},"A6":{"fila":"A","asiento":"6","px":250,"py":45},"A7":{"fila":"A","asiento":"7","px":350,"py":45},"A8":{"fila":"A","asiento":"8","px":400,"py":40},"A9":{"fila":"A","asiento":"9","px":450,"py":35},"A10":{"fila":"A","asiento":"10","px":500,"py":25},"A11":{"fila":"A","asiento":"11","px":550,"py":15},"A12":{"fila":"A","asiento":"12","px":600,"py":0},"B1":{"fila":"B","asiento":"1","px":0,"py":50},"B2":{"fila":"B","asiento":"2","px":50,"py":65},"B3":{"fila":"B","asiento":"3","px":100,"py":75},"B4":{"fila":"B","asiento":"4","px":150,"py":85},"B5":{"fila":"B","asiento":"5","px":200,"py":90},"B6":{"fila":"B","asiento":"6","px":250,"py":95},"B7":{"fila":"B","asiento":"7","px":350,"py":95},"B8":{"fila":"B","asiento":"8","px":400,"py":90},"B9":{"fila":"B","asiento":"9","px":450,"py":85},"B10":{"fila":"B","asiento":"10","px":500,"py":75},"B11":{"fila":"B","asiento":"11","px":550,"py":65},"B12":{"fila":"B","asiento":"12","px":600,"py":50},"C1":{"fila":"C","asiento":"1","px":0,"py":100},"C2":{"fila":"C","asiento":"2","px":50,"py":115},"C3":{"fila":"C","asiento":"3","px":100,"py":125},"C4":{"fila":"C","asiento":"4","px":150,"py":135},"C5":{"fila":"C","asiento":"5","px":200,"py":140},"C6":{"fila":"C","asiento":"6","px":250,"py":145},"C7":{"fila":"C","asiento":"7","px":350,"py":145},"C8":{"fila":"C","asiento":"8","px":400,"py":140},"C9":{"fila":"C","asiento":"9","px":450,"py":135},"C10":{"fila":"C","asiento":"10","px":500,"py":125},"C11":{"fila":"C","asiento":"11","px":550,"py":115},"C12":{"fila":"C","asiento":"12","px":600,"py":100},"D1":{"fila":"D","asiento":"1","px":0,"py":150},"D2":{"fila":"D","asiento":"2","px":50,"py":165},"D3":{"fila":"D","asiento":"3","px":100,"py":175},"D4":{"fila":"D","asiento":"4","px":150,"py":185},"D5":{"fila":"D","asiento":"5","px":200,"py":190},"D6":{"fila":"D","asiento":"6","px":250,"py":195},"D7":{"fila":"D","asiento":"7","px":350,"py":195},"D8":{"fila":"D","asiento":"8","px":400,"py":190},"D9":{"fila":"D","asiento":"9","px":450,"py":185},"D10":{"fila":"D","asiento":"10","px":500,"py":175},"D11":{"fila":"D","asiento":"11","px":550,"py":165},"D12":{"fila":"D","asiento":"12","px":600,"py":150},"E1":{"fila":"E","asiento":"1","px":0,"py":225},"E2":{"fila":"E","asiento":"2","px":50,"py":245},"E3":{"fila":"E","asiento":"3","px":100,"py":255},"E4":{"fila":"E","asiento":"4","px":150,"py":265},"E5":{"fila":"E","asiento":"5","px":200,"py":270},"E6":{"fila":"E","asiento":"6","px":250,"py":275},"E7":{"fila":"E","asiento":"7","px":350,"py":275},"E8":{"fila":"E","asiento":"8","px":400,"py":270},"E9":{"fila":"E","asiento":"9","px":450,"py":265},"E10":{"fila":"E","asiento":"10","px":500,"py":255},"E11":{"fila":"E","asiento":"11","px":550,"py":245},"E12":{"fila":"E","asiento":"12","px":600,"py":225},"F1":{"fila":"F","asiento":"1","px":0,"py":275},"F2":{"fila":"F","asiento":"2","px":50,"py":295},"F3":{"fila":"F","asiento":"3","px":100,"py":305},"F4":{"fila":"F","asiento":"4","px":150,"py":315},"F5":{"fila":"F","asiento":"5","px":200,"py":320},"F6":{"fila":"F","asiento":"6","px":250,"py":325},"F7":{"fila":"F","asiento":"7","px":350,"py":325},"F8":{"fila":"F","asiento":"8","px":400,"py":320},"F9":{"fila":"F","asiento":"9","px":450,"py":315},"F10":{"fila":"F","asiento":"10","px":500,"py":305},"F11":{"fila":"F","asiento":"11","px":550,"py":295},"F12":{"fila":"F","asiento":"12","px":600,"py":275}}}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-module.exports = {"sala1":{"18:00":["D5","A12","E5","E1","A5","B4","B1","C3","A3","C7","C10","A12","E7","A9","E3","D8","E11","E9","C4","B6"],"20:00":["B10","C7","B4","A11","D7","C12","E10","E6","A11","C4","B4","C7","C1","E4","E9","C8","C7","C10","D2","A2"],"22:00":["B11","D1","E2","A8","D11","D6","A9","E6","D5","C6","A1","E11","B6","E8","C4","B5","E5","C11","D12","A9"]},"sala2":{"18:00":["A4","D3","D9","C4","D10","C6","A6","A12","E9","C8","E3","C1","C9","E6","A6","C12","C12","A8","B4","C3"],"20:00":["B9","C4","D10","A2","A3","A9","C7","C9","A8","B2","D9","E2","D1","E9","E2","E6","A3","B5","C6","C7"],"22:00":["D8","E6","B3","E1","E12","B1","B10","B9","C10","C12","C2","C3","E8","C5","A4","E7","D5","C5","A2","A7"]},"sala3":{"20:00":["D9","A9","E7","C5","E9","A9","A6","B7","B8","B2","D2","D1","C2","C3","A6","E6","C8","A1","E4","B12"],"22:00":["D11","E4","C3","D8","B12","A8","A10","E12","A8","D1","B6","B10","C7","A9","E11","E1","C3","B7","D7","B9"],"00:00":["D1","E6","B6","E1","D1","D2","A1","D6","E6","D1","E9","B10","A2","B8","B1","C10","B11","D5","D9","A12"]},"sala4":{"10:00":["A10","B3","A7","B4","E12","C4","B1","B3","D10","D3","B6","B5","E7","B12","B6","A3","E4","C7","B6","E2"],"12:00":["C7","D4","C5","E4","E2","A4","B7","C10","E4","B11","D12","D12","E3","E11","A10","B12","B3","B8","A9","E9"],"20:00":["B3","D7","D3","E10","B4","B11","B10","C4","A11","B11","C3","D6","C10","D5","E4","C12","A2","B6","E5","E12"],"22:00":["D2","E3","B7","D10","B9","D11","E7","D6","B12","A8","B3","D11","D10","E11","E2","C7","D5","C6","B10","D2"],"00:00":["B6","D4","C2","B2","A5","B5","C6","E1","E4","A9","D3","A3","C8","D9","E7","C2","A6","C9","E7","A11"]}}
 
 /***/ })
 /******/ ]);

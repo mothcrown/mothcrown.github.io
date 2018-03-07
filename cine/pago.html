@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cine Hammer - Elige tu asiento</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <body>
+    <div class="container">
+        <header>
+            <a href="index.html"><img src="js/images/logo.svg" title="Cine Hammer!" alt="Logo de Cine Hammer"></img></a>
+          </header>
+        <div class="content">
+          <section>
+              <div class="barra">
+                  <div id="barraEstado">
+                    <div id="estado" class="pago"></div>
+                  </div>
+                </div>
+            <div class="title">
+              <h2>Siguiente paso: ¡Confirma tu ticket!</h2>
+            </div>
+            <div class="info">
+              <p>Película: <span id="infoPelicula" style="font-size: 110%;font-weight: bold;"></span></p>
+              <p>Sala: <span id="infoSala" style="font-size: 110%;font-weight: bold;"></span></p>
+              <p>Sesión: <span id="infoSesion" style="font-size: 110%;font-weight: bold;"></span></p>
+              <p>Asientos seleccionados: <span id="infoAsientos" style="font-size: 110%;font-weight: bold;">Ninguno</span></p>
+              <h3>Precio</h3>
+              <div class="precio">
+                <div><span>Precio por asiento:</span><span id="precioAsiento">8€</span></div>
+                <div><span>Asientos reservados:</span><span id="numAsientos"></span></div>
+                <div><span style="font-size: 110%;font-weight: bold;">TOTAL</span><span id="precioTotal"></span></div>
+              </div>
+            </div>
+            <div class="title">
+              <h2>Entra con tu usuario para procesar el pago</h2>
+            </div>
+            <div class="formulario">
+              <form id="formo">
+                  <h1>Registro de usuario</h1>
+                  <input id="userName" placeholder="Nombre de usuario" type="text" required />
+                  <input placeholder="Contraseña" type="password" required />
+                  <button id="comprafinal">Comprar</button>
+              </form>
+            </div>
+            <div class="background backgrounda"></div>
+          </section>
+        </div>
+        <div class="dialog" style="display: block">
+            <div class="form">
+                <h3>Compra realizada</h3>
+                <p>¡Gracias por comprar tus entradas, <span id="nombreusuario"!></span></p>
+                <p>Se ha realizado un cargo de <span id="preciofinal"></span> a tu tarjeta.</p>
+                <p>Disfruta de tu película</p>
+                <input type="button" id="btnIndex" value="Volver al índice" aria-label="Haz click en Volver o pulsa Escape para volver a nuestra cartelera">
+            </div>
+          </div>
+          <div class="popup">
+              <p>¡Nombre de usuario requerido!</p>
+            </div>
+        <footer class="footera">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img id="ccicon" title="Creative Commons license" src="js/images/by-nc-sa.eu.svg"></img></a>
+            <p>Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+        </footer>
+    </div>
+    <div class="curtain"><img src="js/images/spinner.gif" /></div>
+    <script src="js/payment-bundle.js"></script>
+</body>
+</html>
