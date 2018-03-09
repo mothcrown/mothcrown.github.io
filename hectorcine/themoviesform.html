@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="themovies.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      function readData(){
+        let storage = localStorage.getItem("pelis");
+        $('#datosVoto').text("Has votado a "+ storage);
+        $('#datosVoto').focus();
+      }
+      function sendeth(){
+
+        let salida=$('#nombre')[0].value + $('#correo')[0].value + $('#telefono')[0].value
+
+        localStorage.setItem("sorteo",$('#correo')[0].value);
+        console.log(localStorage.getItem("sorteo"));
+        window.location.replace("./themoviesdata.html");
+      }
+      function volver(){
+        window.location.replace("./themovies.html");
+      }
+    </script>
+  </head>
+  <body onLoad="readData()">
+    <div class="barraSup">
+      <h1>Top 20 peliculas del año</h1>
+    </div>
+    <div id ="form">
+      <p tabindex="0" id="datosVoto"></p>
+      <h1 tabindex="1"> Introduzca su correo para participar en el sorteo de una cita con Chewbacca.</h1>
+      <h3>Nombre y apellido:</h3>
+      <input tabindex="2" type="text" id="nombre" aria-label="Introduzca aqui su Nombre y apellidos"></input>
+      <h3>Correo:</h3>
+      <input tabindex="3" type="text" id="correo" aria-label="Introduzca aqui su direccion de correo!"></input>
+      <h3>Telefono:</h3>
+      <input tabindex="4" type="text" id="telefono" aria-label="Introduzca aqui su telefono!"></input>
+      <button tabindex="5" onclick="sendeth()"> enviar datos!</button>
+      <button tabindex="6" onclick="volver()"> cancelar voto!</button>
+    </div>
+  </body>
+</html>
