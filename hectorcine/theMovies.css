@@ -1,0 +1,81 @@
+  body{
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+
+  background-image: url("./resource/img/wallpaper.jpg");
+  background-position: initial;
+  background-repeat: repeat-y;
+}
+
+.barraSup{
+  width: 100%;
+  background: rgb(246,230,180); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(246,230,180,1) 0%, rgba(237,144,23,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6e6b4', endColorstr='#ed9017',GradientType=0 ); /* IE6-9 */
+}
+
+.panelPelis{
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+#pelis{
+  display:flex;
+  flex-flow: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 5px;
+  margin: 5px;
+
+  background-color: transparent;
+
+}
+
+.peliContainer{
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-content: center;
+
+  width: 80%;
+  max-width: 236px;
+  border: 2px solid black;
+  border-radius: 10px;
+
+  opacity: 1;
+
+  background-color: #ffeace;
+
+  padding: 5px;
+  margin: 5px;
+}
+.peliCartel{
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+}
+
+.peliTitulo{
+  font-family:Tahoma;
+}
+#form{
+  display:flex;
+  flex-direction:column;
+  width:30em;
+  background-color:white;
+  align-items:center;
+  margin:5px;
+  padding: 5px;
+}

@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="theMovies.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+      var seleccionActual =0;
+
+      function votar(peli){
+        //Cambiar ventana
+        writeToLocalStorage(peli);
+        window.location.replace("./theMoviesForm.html");
+      }
+
+      function writeToLocalStorage(peli){
+        console.log(peli);
+        let storage = localStorage.getItem("pelis");
+        let sorteo = localStorage.getItem("sorteo");
+        localStorage.setItem("pelis",peli);
+      }
+
+      $(document).ready(function(){
+        console.log("Loading");
+        $('#pelis')[0].focus();
+
+        $(document).keydown((event)=>{
+          if(event.which===37 || event.keyCode===37){
+            selectPrev();
+          }else if(event.which===39 || event.keyCode===39){
+            selectNext();
+          }else if(event.which===13 || event.keyCode===13){
+            emitVote();
+          }
+        });
+      });
+
+      function selectNext(){
+        seleccionActual++;
+
+        if(seleccionActual>5){
+          seleccionActual=0;
+        }
+        SetFocusOnPeli()
+      }
+      function selectPrev(){
+        seleccionActual--;
+
+        if(seleccionActual<0){
+          seleccionActual=0;
+        }
+        SetFocusOnPeli()
+      }
+
+      function SetFocusOnPeli(){
+        let pelis = $('.peliContainer');
+        console.log(seleccionActual);
+        console.log(pelis[seleccionActual]);
+        pelis[seleccionActual].focus();
+      }
+      function emitVote(){
+        let pelis = $('.peliContainer');
+        votar(pelis[seleccionActual].id);
+      }
+
+    </script>
+  </head>
+  <body>
+
+    <div class="barraSup">
+      <h1>Top 20 peliculas del año</h1>
+    </div>
+
+    <div class="panelPelis">
+        <div id="pelis" tabindex="0" aria-label:"¡Las mejores peliculas del año!, elige tu favorita, utiliza la flecha izquierda y derecha para navegar y enter para votar" >
+          <div class="peliContainer" id="BenSwolo" tabindex="1" aria-label="Pelicula: Ben swolo pulsa tabulador para recorrer los datos, o enter para votar">
+             <img tabindex="2" src="./resource/carteles/swolo.jpg" alt="Cartel de la pelicula Ben Swolo" class="peliCartel">
+             <h2 tabindex="3" aria-label="Titulo:Ben Suolo, a Star Wars story " class="peliTitulo">Ben Swolo, a Star Wars story</h2>
+             <p tabindex="4" class="directorPara">Director: Lars von trier</p>
+             <p tabindex="5" class="interpretesPara">Interpretes: Adam Driver, Rowan atkinson</p>
+             <p tabindex="6" class="sinopsisPara">Sinopsis: Las nuevas aventuras del sith mas rocoso del borde exterior</p>
+             <button tabindex="7" class="votarButton" onclick="votar('BenSwolo')" aria-label="Votar a la pelicula Ben Swolo" >Votar!</button>
+          </div>
+
+          <div class="peliContainer" tabindex="8" id="DinoSeto" aria-label="Pelicula: Dinoseto Origenes pulsa tabulador para recorrer los datos, o enter para votar">
+             <img tabindex="9" src="./resource/carteles/Dinoseto.jpg" alt="Cartel de la pelicula DinoSeto Origenes" class="peliCartel">
+             <h2 tabindex="10"  aria-label="Titulo:Dinoseto Origenes " class="peliTitulo">Dinoseto: Origenes</h2>
+             <p tabindex="11" class="directorPara">Director: Michael Bay</p>
+             <p tabindex="12" class="interpretesPara">Interpretes: Arnold Schwarzenegger, Rutger Hauer</p>
+             <p tabindex="13" class="sinopsisPara">Sinopsis: Un viajero del tiempo, debe traer la ley y el orden a la peligrosa ciudad de Vigo</p>
+             <button tabindex="14" class="votarButton" onclick="votar('DinoSeto')">Votar!</button>
+          </div>
+
+          <div class="peliContainer" tabindex="15" id="PulpoFiccion" aria-label="Pelicula: PulpoFiccion, pulsa tabulador para recorrer los datos, o enter para votar" >
+             <img tabindex="16"  src="./resource/carteles/Pulpo.jpg" alt="Cartel de la pelicula PulpoFiccion" class="peliCartel">
+             <h2 tabindex="17"  class="peliTitulo">PulpoFiccion</h2>
+             <p tabindex="18" class="directorPara">Director: Quentin Tarantino</p>
+             <p tabindex="19" class="interpretesPara">Interpretes: Samuel L.Jackson, mas peña ahi.</p>
+             <p tabindex="20" class="sinopsisPara">Sinopsis: Un grupo de gasteropodos planean robar un banco cuando se enteran de que en su banda hay un infiltrado</p>
+             <button tabindex="21" class="votarButton" onclick="votar('PulpoFiccion')">Votar!</button>
+          </div>
+
+          <div class="peliContainer" id="VacacionesEnRoma">
+             <img src="./resource/carteles/vaca.jpg" alt="Cartel de la pelicula Vacaciones en roma" class="peliCartel">
+             <h2 class="peliTitulo">Vaca-ciones en roma</h2>
+             <p class="directorPara">Director: Jose Tojeiro</p>
+             <p class="interpretesPara">Interpretes: margharita, manchada, ofelia, Jose o pastor</p>
+             <p class="sinopsisPara">Sinopsis: Ganado Bovino en la cuna de la civilizacion!</p>
+             <button class="votarButton" onclick="votar('VacacionesEnRoma')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="xabarin">
+             <img src="./resource/carteles/xabarin.jpg" alt="Cartel de la pelicula Os vixilantes do camiño" class="peliCartel">
+             <h2 class="peliTitulo">Os vixilantes do camiño</h2>
+             <p class="directorPara">Director: Miguelanxo Prado</p>
+             <p class="interpretesPara">Interpretes: Mark Hamill</p>
+             <p class="sinopsisPara">Sinopsis: Un grupo de animales antropomorfos fastidiando a medio galicia</p>
+             <button class="votarButton" onclick="votar('OsVixilantesDo camiño')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="indapandansia">
+             <img src="./resource/carteles/indapandansia.jpg" alt="Cartel de la pelicula Indapandansia Day" class="peliCartel">
+             <h2 class="peliTitulo">Indapandansia Day</h2>
+             <p class="directorPara">Director: Carles Puigdemont</p>
+             <p class="interpretesPara">Interpretes: Carles Puigdemont</p>
+             <p class="sinopsisPara">Sinopsis: El juego de tira y afloja mas tenso del universo!</p>
+             <button class="votarButton" onclick="votar('Indapandansia Day')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="50sombras">
+             <img src="./resource/carteles/rajoy.jpg" alt="Cartel de la pelicula 50 Sombras de Brey" class="peliCartel">
+             <h2 class="peliTitulo">50 Sombras de Brey</h2>
+             <p class="directorPara">Director: Cristóbal Ricardo Montoro Romero</p>
+             <p class="interpretesPara">Interpretes:Mariano rajoy</p>
+             <p class="sinopsisPara">Sinopsis: Como una relacion sadomasoquista puede salvar la economia de un pais?</p>
+             <button class="votarButton" onclick="votar('50 Sombras de Brey')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="TheRoom">
+             <img src="./resource/carteles/theRoom.jpg" alt="Cartel de la pelicula The Room" class="peliCartel">
+             <h2 class="peliTitulo">The Room</h2>
+             <p class="directorPara">Director: Tommy Wisseau</p>
+             <p class="interpretesPara">Interpretes: Tommy Wiseau</p>
+             <p class="sinopsisPara">Sinopsis: WAI, WAI IS DIS HAPENING TO ME. YOU TEARING ME APART LISA</p>
+             <button class="votarButton" onclick="votar('The Room')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="Guardianes">
+             <img src="./resource/carteles/churrasco.jpg" alt="cartel de la pelicula Guardianes de la churrascada" class="peliCartel">
+             <h2 class="peliTitulo">Guardianes de la churrascada</h2>
+             <p class="directorPara">Director: Gus Van Sant</p>
+             <p class="interpretesPara">Interpretes: Actores genericos de pelis de marvel. Yo ke se tio XD</p>
+             <p class="sinopsisPara">Sinopsis: Un grupo de ex superheroes espaciales luchan por defender una churrascada</p>
+             <button class="votarButton" onclick="votar('Guardianes de la churrascada')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="Costeau">
+             <img src="./resource/carteles/Costeau.jpg" alt="cartel de la pelicula Costeau: El octavo pasajero" class="peliCartel">
+             <h2 class="peliTitulo">Costeau: El octavo pasajero</h2>
+             <p class="directorPara">Director: Ridley Scott</p>
+             <p class="interpretesPara">Interpretes: Sigourney Weaver</p>
+             <p class="sinopsisPara">Sinopsis: Cinta de terror basada en el zombi de un famoso divulgador de la zoologia marina.</p>
+             <button class="votarButton" onclick="votar('Costeau: El octavo pasajero')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="Polocausto">
+             <img src="./resource/carteles/Polocausto.jpg" alt="cartel de la pelicula Pollocausto" class="peliCartel">
+             <h2 class="peliTitulo">In league with seitán: Pollocausto</h2>
+             <p class="directorPara">Director: Vegan M'cVeggie</p>
+             <p class="interpretesPara">Interpretes: Miles de pollos. No me creerias si te dijera cuantos</p>
+             <p class="sinopsisPara">Sinopsis: Documental vegano, miles de pollos pasan su vida esclavizados por grandes empresas. Descubra en este viaje salvaja, como la explotacion laboral animal puede ser mas dramatica que la humana.</p>
+             <button class="votarButton" onclick="votar('In league with seitán: Pollocausto')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="RockyVIII">
+             <img src="./resource/carteles/RockyVIII.jpg" alt="cartel de la pelicula Rocky 8" class="peliCartel">
+             <h2 class="peliTitulo">Rocky VIII: Geriatric wars</h2>
+             <p class="directorPara">Director: JJ. Abrams</p>
+             <p class="interpretesPara">Interpretes: Sylvester Stallone.</p>
+             <p class="sinopsisPara">Sinopsis: Rocky se encuentra recluido en una residencia para ancianos. ¿Podra encontrar el amor y el exito profesional de nuevo?</p>
+             <button class="votarButton" onclick="votar('Rocky VIII: Geriatric wars')">Votar!</button>
+          </div>
+
+          <div class="peliContainer" id="Eso!">
+             <img src="./resource/carteles/payaso.jpg" alt="cartel de la pelicula Eso!" class="peliCartel">
+             <h2 class="peliTitulo">La hora chanante presenta: ESO! </h2>
+             <p class="directorPara">Director: Ernesto sevilla</p>
+             <p class="interpretesPara">Interpretes: Ernesto sevilla</p>
+             <p class="sinopsisPara">Sinopsis: El payaso deja su carrera de rapero para acosar a una panda de niñatos en el condado de Maine, Nueva inglaterra. Una cinta chanante</p>
+             <button class="votarButton" onclick="votar('La hora chanante presenta: ESO!')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="Torrente 6">
+             <img src="./resource/carteles/torrente.jpg" alt="cartel de la pelicula Torrente 6" class="peliCartel">
+             <h2 class="peliTitulo">Torrente: Contact</h2>
+             <p class="directorPara">Director: Santiago Segura</p>
+             <p class="interpretesPara">Interpretes: Santiago Segura, Cristiano ronaldo</p>
+             <p class="sinopsisPara">Sinopsis: Torrente recibe un mensaje de una civilizacion extraterrestre del sistema vega.</p>
+             <button class="votarButton" onclick="votar('Torrente: Contact')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="FuryRoad">
+             <img src="./resource/carteles/FuryRoad.jpg" alt="cartel de la pelicula Tf 5 Fury Road" class="peliCartel">
+             <h2 class="peliTitulo">TF-5: Fury Road</h2>
+             <p class="directorPara">Director:La culpa siempre es de otro</p>
+             <p class="interpretesPara">Interpretes: Medio Tenerife.</p>
+             <p class="sinopsisPara">Sinopsis: Un atasco en la TF-5 acaba desencadenando una situacion de desesperacion y violencia</p>
+             <button class="votarButton" onclick="votar('Fury Road')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="ElDiaDeLaBestia2">
+             <img src="./resource/carteles/LaBestia.jpg" alt="cartel de la pelicula El dia de la bestia II" class="peliCartel">
+             <h2 class="peliTitulo">El dia de la bestia 2: El retorno</h2>
+             <p class="directorPara">Director: Alex de la iglesia</p>
+             <p class="interpretesPara">Interpretes: Peña española a tope.</p>
+             <p class="sinopsisPara">Sinopsis: Una secuela que nadie queria, una peli de culto, ¿Que podria salir mal?</p>
+             <button class="votarButton" onclick="votar('El Dia de la bestia')">Votar!</button>
+          </div>
+
+          <div class="peliContainer" id="JordiHurtado">
+             <img src="./resource/carteles/hurtado.jpg" alt="cartel de la pelicula Jordi Hurtado: Immortal" class="peliCartel">
+             <h2 class="peliTitulo">Jordi Hurtado: Immortal</h2>
+             <p class="directorPara">Director: Brian Singer</p>
+             <p class="interpretesPara">Interpretes: Jordi Hurtado, Fraga Iribarne, y el tipo que hace de Magneto.</p>
+             <p class="sinopsisPara">Sinopsis: Jordi Hurtado deja Saber y ganar para unirse a los X-Men.</p>
+             <button class="votarButton" onclick="votar('Jordi Hurtado: Immortal')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="PuñadoDePercebes">
+             <img src="./resource/carteles/Marisco.jpg" alt="cartel de la pelicula Por un puñado de peces" class="peliCartel">
+             <h2 class="peliTitulo">Por un puñado de peces</h2>
+             <p class="directorPara">Director: Sergio Leone</p>
+             <p class="interpretesPara">Interpretes: Clín Isbu</p>
+             <p class="sinopsisPara">Sinopsis: Un mariscador sin nombre llega a una aldea dividida por una lucha de poder entre la cofradia y los furtivos.</p>
+             <button class="votarButton" onclick="votar('Por un puñado de peces')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="Raxomon">
+             <img src="./resource/carteles/Raxomon.jpg" alt="cartel de la pelicula Lomo Raxo-mon" class="peliCartel">
+             <h2 class="peliTitulo">Lomo Raxo-mon</h2>
+             <p class="directorPara">Director: Akira Kurosawa</p>
+             <p class="interpretesPara">Interpretes: Toshiro Mifune, Un cerdo.</p>
+             <p class="sinopsisPara">Sinopsis: Clasico del cine sobre el sacrificio de un cerdo, el dia de San Martiño, contado por un cerdo, un samurai de aldea, y un fantasma.</p>
+             <button class="votarButton" onclick="votar('Lomo Raxomon')">Votar!</button>
+          </div>
+          <div class="peliContainer" id="">
+             <img src="./resource/carteles/fraga.jpg" alt="cartel de la pelicula Rocky 8" class="peliCartel">
+             <h2 class="peliTitulo">Heriberto West: Reanimador</h2>
+             <p class="directorPara">Director: HP.Fabricamor</p>
+             <p class="interpretesPara">Interpretes: Fraga Iribarne.</p>
+             <p class="sinopsisPara">Sinopsis:Un medico del Hospital clinico de Santiago de compostela descubre una manera de traer los muertos a la vida.</p>
+             <button class="votarButton" onclick="votar('Heriberto West: Reanimador')">Votar!</button>
+          </div>
+
+        </div>
+    </div>
+  </body>
+</html>

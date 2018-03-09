@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="theMoviesData.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    var titulos, votos;
+    var mails = [];
+
+
+    $.getJSON( "./results.json", function( data ) {
+
+      console.log(data);
+
+      let objeto = localStorage.getItem("json");
+      var votoAct = localStorage.getItem("pelis");
+      var mail = localStorage.getItem("sorteo");
+
+      console.log(objeto);
+      if(objeto==null){
+        titulos = data.titulos;
+        votos = data.results;
+        mails = data.mail;
+      }
+
+      else{
+
+        let objetoParsed = JSON.parse(objeto);
+        titulos = objetoParsed.titulos;
+        votos = objetoParsed.results;
+        mails = objetoParsed.mail;
+      }
+
+      mails.push(mail);
+      var found=false;
+      for (var i = 0; i < titulos.length; i++) {
+        if (titulos[i]==votoAct){
+          console.log("sumando voto!")
+          votos[i]= votos[i]+1;
+          found=true;
+        }
+      }
+      if(!found){
+        titulos.push(votoAct);
+        votos.push(1);
+      }
+
+      data={"results":votos,"titulos":titulos,"mail":mails};
+      //data= JSON.stringify(dataRaw);
+      guardar(data);
+    });
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      var tipoDeGrafica = 0;
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Titulo');
+        data.addColumn('number', 'Votos');
+        data.addRows(titulos.length);
+
+        for (var i = 0; i < titulos.length; i++) {
+          data.setCell(i,0,titulos[i]);
+          data.setCell(i,1,votos[i]);
+        }
+
+
+
+        var options = {'title':'Porcentaje de las pelis',
+                       'width':400,
+                       'height':300,
+                     };
+        // Instantiate and draw our chart, passing in some options.
+        if(tipoDeGrafica==0){
+          var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        }else{
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        }
+
+        chart.draw(data, options);
+      }
+
+      function volver(){
+        window.location.replace("./theMovies.html");
+      }
+
+      function change(){
+        if(tipoDeGrafica==0){
+          tipoDeGrafica=1;
+        }
+        else{
+          tipoDeGrafica=0;
+        }
+        drawChart();
+      }
+
+      function guardar(objeto){
+        console.log(objeto);
+        let string= "resultados de las pelis: ";
+        for (var i = 0; i < objeto.results.length; i++) {
+          string = string + objeto.titulos[i]+" tiene "+objeto.results[i]+" votos, ";
+        }
+
+        $('#chart_div').attr("aria-label",string);
+
+        for (var i = objeto.mail.length; i > objeto.mail.length-5; i--) {
+          let txt2 = $("<p></p>").text(objeto.mail[i]+", voto a "+objeto.titulos[i]);
+          $('#ultimosVotos').append(txt2);
+        }
+        // Put the object into storage
+        localStorage.setItem('json', JSON.stringify(objeto));
+        // Retrieve the object from storage
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <div class="barraSup">
+      <h2>Top 20 peliculas del año</h2>
+    </div>
+    <div class="grafico">
+      <div class="titulo">
+        <h2>Porcentaje de votos por pelicula:</h2>
+      </div>
+
+      <div id="chart_div">
+      </div>
+      <button onclick="change()">Cambiar tipo de grafico</button>
+      <button onclick="volver()">Volver a la lista de peliculas.</button>
+    </div>
+  </body>
+</html>
