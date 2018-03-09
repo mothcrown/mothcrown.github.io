@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="theMoviesData.css">
+    <link rel="stylesheet" href="themoviesdata.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -77,6 +77,7 @@
                        'width':400,
                        'height':300,
                      };
+
         // Instantiate and draw our chart, passing in some options.
         if(tipoDeGrafica==0){
           var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -89,7 +90,7 @@
       }
 
       function volver(){
-        window.location.replace("./theMovies.html");
+        window.location.replace("./themovies.html");
       }
 
       function change(){
@@ -106,10 +107,11 @@
         console.log(objeto);
         let string= "resultados de las pelis: ";
         for (var i = 0; i < objeto.results.length; i++) {
-          string = string + objeto.titulos[i]+" tiene "+objeto.results[i]+" votos, ";
+          string = string + objeto.titulos[i]+" tiene "+objeto.results[i]+" votos, </br>";
         }
 
-        $('#chart_div').attr("aria-label",string);
+        $('#altGrafico').attr("aria-label",string);
+        $('#altGrafico').text(strin);
 
         for (var i = objeto.mail.length; i > objeto.mail.length-5; i--) {
           let txt2 = $("<p></p>").text(objeto.mail[i]+", voto a "+objeto.titulos[i]);
@@ -131,7 +133,7 @@
       <div class="titulo">
         <h2>Porcentaje de votos por pelicula:</h2>
       </div>
-
+      <p id="altGrafico"></p>
       <div id="chart_div">
       </div>
       <button onclick="change()">Cambiar tipo de grafico</button>
